@@ -16,8 +16,10 @@ def greeting(lenguage) -> str:
         msg="Ciao mondo!"
     else:
         msg="Sorry that lenguage has not beed added yet"
-        
+    
+    print("**********************************")
     print(msg)
+    print("**********************************")
     return msg 
     
 greeting(sys.argv[1])
