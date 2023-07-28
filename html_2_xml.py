@@ -1,6 +1,6 @@
 import csv
 
-f = open('ut_results.csv')
+f = open('ut_result.csv')
 csv_f = csv.reader(f)
 data = []
 
