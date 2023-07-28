@@ -1,21 +1,15 @@
 import csv
-
-f = open('ut_result.csv')
-csv_f = csv.reader(f)
-data = []
-
-for row in csv_f:
-	data.append(row)
-	
-f.close()
-
-print(data[1:])
-
-def convert_row(row):
-	return """<UNIT_TESTS_RESULTS>
-	<TestCase>%s</TestCase>
-	<Result>%s</Result>
-</UNIT_TESTS_RESULTS>""" % (row[0], row[1])
-
-with open ('output.xml', 'w') as f:
-	f.write('\n'.join([convert_row(row) for row in data]))
+filename = 'ut_result.csv'
+def convert_row(headers, row):
+    s = f'<row id="{row[0]}">\n'
+    for header, item in zip(headers, row):
+        s += f'    <{header}>' + f'{item}' + f'</{header}>\n'
+    return s + '</row>'
+with open(filename, 'r') as f:
+    r = csv.reader(f)
+    headers = next(r)
+    xml = '<data>\n'
+    for row in r:
+        xml += convert_row(headers, row) + '\n'
+    xml += '</data>'
+    print(xml)
