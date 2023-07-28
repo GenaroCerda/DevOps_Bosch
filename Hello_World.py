@@ -1,8 +1,7 @@
 import sys 
 
-def greeting():
-
-    lenguage=sys.argv[1]
+def greeting(lenguage) -> str:
+    
     if lenguage=="English":
         msg="Hello World!"
     elif lenguage=="German":
@@ -12,12 +11,13 @@ def greeting():
     elif lenguage=="Portuguese":
         msg="Olá mundo!"
     elif lenguage=="French":
-        msg="Salut monde"
+        msg="Salut monde!"
     elif lenguage=="Italian":
-        msg="Ciao mondo"
+        msg="Ciao mondo!"
     else:
-        msg="Sorry that lenguage is not added yet to DB"
+        msg="Sorry that lenguage has not beed added yet"
         
     print(msg)
+    return msg 
     
-greeting()
+greeting(sys.argv[1])
