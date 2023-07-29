@@ -5,8 +5,10 @@ def convert_row(headers, row):
     for header, item in zip(headers, row):
         s += f'    <{header}>' + f'{item}' + f'</{header}>\n'
     return s + '</row>'
-with open(filename, 'r') as f:
-    r = csv.reader(f)
+    
+    
+with open(filename, 'r') as f: #Abre el csv y lo nombra 'f'
+    r = csv.reader(f) # creamos una instanci 'r' del objecto csv.reader
     headers = next(r)
     xml = '<data>\n'
     for row in r:
