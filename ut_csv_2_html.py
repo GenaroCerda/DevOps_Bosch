@@ -1,4 +1,5 @@
 import csv
+import pandas as pd
 
 results = []
 with open('ut_result.log', 'r') as input_file:
@@ -13,4 +14,7 @@ with open('ut_result.log', 'r') as input_file:
                 if line.startswith('test_'):
                     rows = line.split(' ')
                     writer.writerow(rows[0:2])
-                    
+                   
+df1 = pd.read_csv('ut_result.csv')
+html_string = df1.to_html()
+print(html_string)
